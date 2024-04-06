@@ -21,7 +21,6 @@ import 'package:image_editor_plus/modules/link.dart';
 import 'package:image_editor_plus/modules/text.dart';
 import 'package:image_editor_plus/options.dart' as o;
 import 'package:image_editor_plus/utils.dart';
-import 'package:image_picker/image_picker.dart';
 
 import 'package:screenshot/screenshot.dart';
 
@@ -909,8 +908,6 @@ class _SingleImageEditorState extends State<SingleImageEditor> {
       ),
     );
   }
-
-  final picker = ImagePicker();
 
   Future<void> loadImage(dynamic imageFile) async {
     await currentImage.load(imageFile);
