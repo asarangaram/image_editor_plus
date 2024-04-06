@@ -43,7 +43,7 @@ class _ImageEditorExampleState extends State<ImageEditorExample> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          if (imageData != null) Image.memory(imageData!),
+          if (imageData != null) Flexible(child: Image.memory(imageData!)),
           const SizedBox(height: 16),
           ElevatedButton(
             child: const Text("Single image editor"),
