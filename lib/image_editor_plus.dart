@@ -564,7 +564,7 @@ class _SingleImageEditorState extends State<SingleImageEditor> {
                         var mergedImage = await getMergedImage();
                         LoadingScreen(scaffoldGlobalKey).hide();
 
-                        if (!mounted) return;
+                        if (!context.mounted) return;
 
                         Uint8List? croppedImage = await Navigator.push(
                           context,
@@ -623,7 +623,7 @@ class _SingleImageEditorState extends State<SingleImageEditor> {
                           var mergedImage = await getMergedImage();
                           LoadingScreen(scaffoldGlobalKey).hide();
 
-                          if (!mounted) return;
+                          if (!context.mounted) return;
 
                           var drawing = await Navigator.push(
                             context,
@@ -922,7 +922,7 @@ class _SingleImageEditorState extends State<SingleImageEditor> {
                         var mergedImage = await getMergedImage();
                         LoadingScreen(scaffoldGlobalKey).hide();
 
-                        if (!mounted) return;
+                        if (!context.mounted) return;
 
                         Uint8List? filterAppliedImage = await Navigator.push(
                           context,
@@ -1110,7 +1110,7 @@ class _ImageCropperState extends State<ImageCropper> {
                   rect: state.getCropRect()!,
                 );
 
-                if (mounted) Navigator.pop(context, data);
+                if (context.mounted) Navigator.pop(context, data);
               },
             ),
           ],
@@ -1344,7 +1344,7 @@ class _ImageFiltersState extends State<ImageFilters> {
                 var data = await screenshotController.capture();
                 loadingScreen.hide();
 
-                if (mounted) Navigator.pop(context, data);
+                if (context.mounted) Navigator.pop(context, data);
               },
             ),
           ],
@@ -1683,7 +1683,7 @@ class _ImageEditorDrawingState extends State<ImageEditorDrawing> {
                     width: widget.image.width,
                   );
 
-                  if (!mounted) return;
+                  if (!context.mounted) return;
 
                   return Navigator.pop(context, data!.buffer.asUint8List());
                 }
@@ -1692,7 +1692,7 @@ class _ImageEditorDrawingState extends State<ImageEditorDrawing> {
                 var image = await screenshotController.capture();
                 loadingScreen.hide();
 
-                if (!mounted) return;
+                if (!context.mounted) return;
 
                 return Navigator.pop(context, image);
               },
