@@ -5,6 +5,7 @@ import 'package:image_editor_plus/image_editor_plus.dart';
 void main() {
   runApp(
     const MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: ImageEditorExample(),
     ),
   );
@@ -43,16 +44,17 @@ class _ImageEditorExampleState extends State<ImageEditorExample> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          if (imageData != null) Flexible(child: Image.memory(imageData!)),
+          if (imageData != null)
+            Flexible(child: Center(child: Image.memory(imageData!))),
           const SizedBox(height: 16),
           ElevatedButton(
-            child: const Text("Single image editor"),
+            child: const Text("Edit Image"),
             onPressed: () async {
               var editedImage = await Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => ImageEditor(
-                    image: imageData,
+                    image: imageData!,
                   ),
                 ),
               );
@@ -64,28 +66,7 @@ class _ImageEditorExampleState extends State<ImageEditorExample> {
               }
             },
           ),
-          ElevatedButton(
-            child: const Text("Multiple image editor"),
-            onPressed: () async {
-              var editedImage = await Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => ImageEditor(
-                    images: [
-                      imageData,
-                      imageData,
-                    ],
-                  ),
-                ),
-              );
-
-              // replace with edited image
-              if (editedImage != null) {
-                imageData = editedImage;
-                setState(() {});
-              }
-            },
-          ),
+          const SizedBox(height: 16),
         ],
       ),
     );
